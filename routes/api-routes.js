@@ -129,7 +129,6 @@ router.post('/login', async (req, res) => {
     if (!user) return res.status(400).send('user not found')
     const isCorrectPassword = await bcrypt.compare(password, user.password)
     if (!isCorrectPassword) return res.status(400).send('incorrect password')
-    res.json({...user, isCorrectPassword})
     req.session.loggedIn = true
     req.session.userId = user.id
     req.session.save(() => res.redirect('/'))

@@ -1,5 +1,5 @@
 function checkAuth(req, res, next) {
-	if (req.session && req.session.isLoggedIn) {
+	if (req.session && req.session.loggedIn) {
 		return next()
 	}
 	res.redirect('/login')

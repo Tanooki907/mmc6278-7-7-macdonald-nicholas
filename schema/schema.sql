@@ -1,3 +1,5 @@
+CREATE DATABASE IF NOT EXISTS music_shop_db;
+
 USE music_shop_db;
 
 CREATE TABLE inventory (
@@ -18,7 +20,7 @@ CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   username VARCHAR(100) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL
-)
+);
 
 CREATE TABLE cart (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -28,7 +30,7 @@ CREATE TABLE cart (
   quantity INT NOT NULL DEFAULT 1,
   FOREIGN KEY (inventory_id)
     REFERENCES inventory (id)
-    ON DELETE CASCADE
+    ON DELETE CASCADE,
 -- add a foreign key constraint to user_id just like inventory_id
   FOREIGN KEY (user_id)
     REFERENCES users (id)
